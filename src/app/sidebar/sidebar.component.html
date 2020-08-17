@@ -1,0 +1,29 @@
+<mat-nav-list>
+  <div class="profile-card" *ngIf="userDetails">
+    <div class="header">
+      <h2>{{ userDetails.firstName }} {{ userDetails.lastName }}</h2>
+      <h4>{{ userDetails.email }}</h4>
+    </div>
+    <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Soufiane FADIL">
+  </div>
+
+  <mat-divider *ngIf="userDetails"></mat-divider>
+
+  <h2 matSubheader>Dashboard</h2>
+
+  <a mat-list-item routerLinkActive="list-item-active"  [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['tenants']">
+    <mat-icon>supervisor_account</mat-icon>
+    Tenants
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active"  [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['buildings']">
+    <mat-icon>apartment</mat-icon>
+    Building
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active"  [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['devices']">
+    <mat-icon>speaker_phone</mat-icon>
+    Devices
+  </a>
+
+</mat-nav-list>
+
+
