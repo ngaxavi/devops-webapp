@@ -1,0 +1,63 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+  namespace: dev
+  labels:
+    app: webapp
+spec:
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+        - name: device
+          image: registry.ngaxavilabs.com/devops/webapp
+          imagePullPolicy: IfNotPresent
+      imagePullSecrets:
+        - name: registry-devops
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp
+  namespace: dev
+  labels:
+    app: webapp
+spec:
+  selector:
+    app: webapp
+  ports:
+    - port: 80
+      name: webapp-port
+      targetPort: 80
+      protocol: TCP
+  type: ClusterIP
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: webapp
+  namespace: dev
+  labels:
+    app: webapp
+spec:
+  tls:
+    - hosts:
+        - testing.devopsapp.ngaxavilabs.com
+      secretName: testing-devopsapp-ngaxavilabs-com-tls
+  rules:
+    - host: testing.devopsapp.ngaxavilabs.com
+      http:
+        paths:
+          - backend:
+              serviceName: webapp
+              servicePort: 80
+            path: /
