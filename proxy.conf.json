@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://devopsapp.ngaxavilabs.com",
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}
