@@ -1,1 +1,132 @@
-<p>building works!</p>
+<div class="lg:container lg:mx-auto pt-16">
+  <div class="py-4 clearfix">
+    <button  (click)="createNewBuilding()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center float-right">
+      <svg viewBox="0 0 20 20" fill="currentColor" class="plus w-6 h-6"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+      <span>Add Building</span>
+    </button>
+  </div>
+  <div class="flex flex-col">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead>
+            <tr>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                ID
+              </th>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Name
+              </th>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Address
+              </th>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Floor
+              </th>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Flats
+              </th>
+              <th class="px-6 py-3 bg-gray-50"></th>
+            </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+            <tr *ngFor="let building of buildings; let row = index" (mouseover)="hoverCell = row" (mouseleave)="hoverCell = -1">
+              <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                {{ building._id | slice:0:8 }}
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                {{ building.name }}
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                {{ building.address }}
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                {{ building.nbOfFloor }}
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                {{ building.flats.length }}
+              </td>
+
+              <td class="px-2 py-4 whitespace-no-wrap text-right text-sm leading-4 font-medium flex flex-row" >
+                <a class="text-yellow-600 hover:text-yellow-900" (click)="updateBuilding(building)" *ngIf="row === hoverCell">
+                  <svg viewBox="0 0 20 20" fill="currentColor" class="pencil w-6 h-6">
+                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                  </svg>
+                </a>
+                <a class="text-red-600 hover:text-red-900" (click)="deleteBuilding(building)" *ngIf="row === hoverCell">
+                  <svg viewBox="0 0 20 20" fill="currentColor" class="trash w-6 h-6"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                </a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="lg:container lg:mx-auto pt-16">
+  <div class="py-4 clearfix">
+    <button  (click)="createNewFlat()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded inline-flex items-center float-right">
+      <svg viewBox="0 0 20 20" fill="currentColor" class="plus w-6 h-6"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
+      <span>Add Flat</span>
+    </button>
+  </div>
+  <div class="flex flex-col">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead>
+            <tr>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                ID
+              </th>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Flat
+              </th>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Building
+              </th>
+              <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Rooms
+              </th>
+              <th class="px-6 py-3 bg-gray-50"></th>
+            </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+            <tr *ngFor="let flat of flats; let row = index" (mouseover)="flatCell = row" (mouseleave)="flatCell = -1">
+              <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                {{ flat._id | slice:0:8 }}
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                {{ flat.flatId }}
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                {{ flat.buildingName }}
+              </td>
+              <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                {{ flat.rooms.length  }}
+              </td>
+
+              <td class="px-2 py-4 whitespace-no-wrap text-right text-sm leading-4 font-medium flex flex-row" >
+                <a class="text-yellow-600 hover:text-yellow-900" (click)="updateFlat(flat)" *ngIf="row === flatCell">
+                  <svg viewBox="0 0 20 20" fill="currentColor" class="pencil w-6 h-6">
+                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                  </svg>
+                </a>
+                <a class="text-red-600 hover:text-red-900" (click)="deleteFlat(flat)" *ngIf="row === flatCell">
+                  <svg viewBox="0 0 20 20" fill="currentColor" class="trash w-6 h-6"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                </a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

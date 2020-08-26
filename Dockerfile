@@ -1,8 +1,9 @@
 FROM node:12-slim as builder
 WORKDIR /app
+ARG TARGET
 COPY . .
 RUN npm install --quiet
-RUN npm run build
+RUN npm run build:${TARGET}
 
 FROM nginx:1.19-alpine
 RUN rm -rf /usr/share/nginx/html/*
