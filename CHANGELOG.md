@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/ngaxavi/devops-webapp/compare/v1.1.0...v1.2.0) (2020-08-26)
+
+
+### Bug Fixes
+
+* release name ([d6d5022](https://github.com/ngaxavi/devops-webapp/commit/d6d5022e8f82fb7489be777f2f7876068f029a52))
+
+
+### Features
+
+* webapp for tenant ([a313f2b](https://github.com/ngaxavi/devops-webapp/commit/a313f2b50e31763ccb7b014555106989e26bee51))
+
 # [1.1.0](https://github.com/ngaxavi/devops-webapp/compare/v1.0.0...v1.1.0) (2020-08-17)
 
 
