@@ -1,0 +1,17 @@
+{
+  "/api/buildings": {
+    "target": "http://localhost:3000",
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/api/devices": {
+    "target": "http://localhost:3001",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/api/tenants": {
+    "target": "http://localhost:3002",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

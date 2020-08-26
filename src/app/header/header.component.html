@@ -1,22 +1,21 @@
-
-<mat-toolbar color="primary">
+<mat-toolbar class="bg-gray-800">
   <mat-toolbar-row>
     <button mat-icon-button (click)="toggleSideBar()">
-      <mat-icon>menu</mat-icon>
+      <mat-icon class="text-white focus:border-transparent">menu</mat-icon>
     </button>
 
-    <span> APP LOGO </span>
+    <span class="text-white"> Immo </span>
 
     <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
       <ul fxLayout="row" fxLayoutGap="20px">
         <li *ngIf="!isLoggedIn">
           <button mat-icon-button (click)="login()" title="Sign in">
-            <mat-icon>login</mat-icon>
+            <mat-icon class="text-white">login</mat-icon>
           </button>
         </li>
         <li *ngIf="isLoggedIn">
           <button mat-button [matMenuTriggerFor]="menu">
-            <mat-icon>person_outline</mat-icon>
+            <mat-icon class="text-white">person_outline</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="logout()">

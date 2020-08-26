@@ -1,13 +1,16 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {TenantComponent} from './tenant.component';
-import {TenantRoutingModule} from './tenant-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { TenantComponent } from './tenant.component';
+import { TenantRoutingModule } from './tenant-routing.module';
+import { AddEditOccupantComponent, DeleteModalComponent } from './modals';
+import { HttpClientModule } from '@angular/common/http';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
-  imports: [CommonModule, TenantRoutingModule],
-  declarations: [TenantComponent],
-  exports: [TenantComponent]
+  imports: [CommonModule, TenantRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule, MatDatepickerModule],
+  declarations: [TenantComponent, AddEditOccupantComponent, DeleteModalComponent],
+  exports: [TenantComponent],
+  entryComponents: [AddEditOccupantComponent, DeleteModalComponent],
 })
-export class TenantModule {
-
-}
+export class TenantModule {}
