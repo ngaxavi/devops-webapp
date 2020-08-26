@@ -1,1 +1,93 @@
-<p>device works!</p>
+<div class="lg:container lg:mx-auto pt-16">
+  <div class="flex flex-col">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead>
+              <tr>
+                <th
+                  class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  ID
+                </th>
+                <th
+                  class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Name
+                </th>
+                <th
+                  class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Flat
+                </th>
+                <th
+                  class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Room
+                </th>
+                <th
+                  class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Last Updated
+                </th>
+                <th class="px-6 py-3 bg-gray-50"></th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr
+                *ngFor="let device of devices; let row = index"
+                (mouseover)="deviceCell = row"
+                (mouseleave)="deviceCell = -1"
+              >
+                <td class="px-6 py-4 whitespace-no-wrap text-xs leading-5">
+                  {{ device.deviceId }}
+                </td>
+                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                  {{ device.name }}
+                </td>
+                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                  {{ device.flatId }}
+                </td>
+                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                  {{ device.roomNr }}
+                </td>
+
+                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-600">
+                  {{ device.updatedAt | dateAgo }}
+                </td>
+
+                <td class="px-2 py-4 whitespace-no-wrap text-right text-sm leading-4 font-medium flex flex-row">
+                  <a
+                    class="text-yellow-600 hover:text-yellow-900"
+                    *ngIf="row === deviceCell"
+                    (click)="updateDevice(device)"
+                  >
+                    <svg viewBox="0 0 20 20" fill="currentColor" class="pencil w-6 h-6">
+                      <path
+                        d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
+                      ></path>
+                    </svg>
+                  </a>
+                  <a
+                    class="text-blue-600 hover:text-blue-900"
+                    *ngIf="row === deviceCell"
+                    (click)="viewDeviceValues(device)"
+                  >
+                    <svg viewBox="0 0 20 20" fill="currentColor" class="presentation-chart-line w-6 h-6">
+                      <path
+                        fill-rule="evenodd"
+                        d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

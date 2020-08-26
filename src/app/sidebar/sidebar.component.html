@@ -1,29 +1,30 @@
 <mat-nav-list>
-  <div class="profile-card" *ngIf="userDetails">
+  <div class="text-center p-5 pt-0" *ngIf="userDetails">
     <div class="header">
-      <h2>{{ userDetails.firstName }} {{ userDetails.lastName }}</h2>
-      <h4>{{ userDetails.email }}</h4>
+      <h2 class="text-2xl font-bold">{{ userDetails.firstName }} {{ userDetails.lastName }}</h2>
+      <h4 class="text-gray-600 text-sm">{{ userDetails.email }}</h4>
     </div>
-    <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Soufiane FADIL">
+    <img
+      class="mt-4 mb-3 rounded-full h-20 w-20 inline"
+      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+      alt="Me"
+    />
   </div>
 
   <mat-divider *ngIf="userDetails"></mat-divider>
 
   <h2 matSubheader>Dashboard</h2>
 
-  <a mat-list-item routerLinkActive="list-item-active"  [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['tenants']">
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/tenants">
     <mat-icon>supervisor_account</mat-icon>
-    Tenants
+    Occupants
   </a>
-  <a mat-list-item routerLinkActive="list-item-active"  [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['buildings']">
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/buildings">
     <mat-icon>apartment</mat-icon>
-    Building
+    Buildings
   </a>
-  <a mat-list-item routerLinkActive="list-item-active"  [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['devices']">
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/devices">
     <mat-icon>speaker_phone</mat-icon>
     Devices
   </a>
-
 </mat-nav-list>
-
-

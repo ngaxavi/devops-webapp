@@ -11,6 +11,8 @@ build:
       context: .
       docker:
         dockerfile: Dockerfile
+        buildArgs:
+          TARGET: dev
         cacheFrom:
           - registry.ngaxavilabs.com/devops/webapp:latest
 deploy:
@@ -33,6 +35,9 @@ profiles:
   - name: production
     patches:
       - op: replace
+        path: /build/artifacts/0/docker/buildArgs/TARGET
+        value: prod
+      - op: replace
         path: /build/tagPolicy/gitCommit/variant
         value: Tags
     deploy:
@@ -43,6 +48,9 @@ profiles:
           disableValidation: false
   - name: staging
     patches:
+      - op: replace
+        path: /build/artifacts/0/docker/buildArgs/TARGET
+        value: staging
       - op: add
         path: /build/tagPolicy/gitCommit/prefix
         value: staging-

@@ -1,17 +1,17 @@
-import {Component, OnInit, EventEmitter, Output} from '@angular/core';
-import {KeycloakProfile} from 'keycloak-js';
-import {KeycloakService} from 'keycloak-angular';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { KeycloakProfile } from 'keycloak-js';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean;
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
 
-  constructor(private readonly keycloakService: KeycloakService) { }
+  constructor(private readonly keycloakService: KeycloakService) {}
 
   async ngOnInit(): Promise<void> {
     this.isLoggedIn = await this.keycloakService.isLoggedIn();
@@ -25,12 +25,10 @@ export class HeaderComponent implements OnInit {
     await this.keycloakService.logout();
   }
 
-  toggleSideBar() {
+  toggleSideBar(): void {
     this.toggleSideBarForMe.emit();
     setTimeout(() => {
-      window.dispatchEvent(
-        new Event('resize')
-      );
+      window.dispatchEvent(new Event('resize'));
     }, 300);
   }
 }
