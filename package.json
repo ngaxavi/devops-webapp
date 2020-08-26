@@ -88,7 +88,7 @@
       ],
       {
         "path": "@semantic-release/git",
-        "message": "chore(tenant-service): release ${nextRelease.version}\n\n${nextRelease.notes}"
+        "message": "chore(devops-webapp): release ${nextRelease.version}\n\n${nextRelease.notes}"
       }
     ],
     "publish": [
