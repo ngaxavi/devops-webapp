@@ -1,4 +1,3 @@
-import { timestamp } from 'rxjs/operators';
 export interface Occupant {
   _id?: string;
   name: string;
@@ -77,4 +76,17 @@ export interface MeasurementValue {
   timestamp: string;
   temperature: number;
   meterValue: number;
+}
+
+export interface OccupantBilling {
+  occupant: Occupant;
+  address: string;
+  billings: Billing[];
+}
+
+export interface Billing {
+  roomNr: number;
+  minMeterValue: number;
+  maxMeterValue: number;
+  billingValue: number;
 }
