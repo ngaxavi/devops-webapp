@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/ngaxavi/devops-webapp/compare/v1.2.0...v1.3.0) (2020-09-04)
+
+
+### Features
+
+* add billing view for user ([42787b9](https://github.com/ngaxavi/devops-webapp/commit/42787b9f95c2ba86744b134a27804ca493c7c0a1))
+
 # [1.2.0](https://github.com/ngaxavi/devops-webapp/compare/v1.1.0...v1.2.0) (2020-08-26)
 
 
