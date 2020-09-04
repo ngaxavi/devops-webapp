@@ -1,4 +1,4 @@
-import { Occupant } from './../app.interface';
+import { Occupant, OccupantBilling } from './../app.interface';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -11,6 +11,10 @@ export class TenantService {
 
   getAll(): Observable<Occupant[]> {
     return this.http.get<Occupant[]>(`/api/tenants/occupants`);
+  }
+
+  getMeterValueForFlatBilling(id: string): Observable<OccupantBilling> {
+    return this.http.get<OccupantBilling>(`/api/tenants/occupants/${id}/billing`);
   }
 
   createOccupant(dto: any): Observable<Occupant> {

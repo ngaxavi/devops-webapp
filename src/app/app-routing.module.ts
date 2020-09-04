@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/tenants',
+    redirectTo: '/buildings',
     pathMatch: 'full',
   },
 ];

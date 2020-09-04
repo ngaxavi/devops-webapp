@@ -1,0 +1,339 @@
+/*! _invoice.scss | Nephos | CSS Ninja */
+
+/* ==========================================================================
+Invoice styles
+========================================================================== */
+
+/***
+TABLE OF CONTENTS
+=============================================================================
+0. Layout
+1. Invoice
+2. Responsive Table
+=============================================================================
+***/
+
+/* ==========================================================================
+0. Layout
+========================================================================== */
+
+$white: #fff;
+$smoke-white: #fcfcfc;
+$placeholder: #cecece;
+$light-grey: #f9f9f9;
+$muted-grey: #999;
+$muted-grey-bold: #828282;
+$title-grey: #a9abac;
+$fade-grey: #ededed;
+$accent-grey: #ccc;
+$dark-text: #4a4a4a;
+$chosen-grey: #e0e0e0;
+$chosen-dark-grey: #66676b;
+$grey-6: #666;
+$section-grey: #fcfcfc;
+
+$primary: #0023ff;
+$secondary: #00d1b2;
+$accent: #7f00ff;
+
+$sidebar: #344258;
+$red: #ff3b3c;
+$blue: #039be5;
+$green: #00b289;
+$orange: #eda514;
+
+//Wrapper
+.invoice-wrap {
+  padding: 20px 0;
+}
+
+//Controls
+.invoice-controls {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .invoice-top-actions {
+    display: flex;
+    align-items: center;
+    flex-grow: 2;
+
+    a {
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+      color: $dark-text;
+
+      &:hover {
+        text-decoration: underline;
+        color: $primary;
+      }
+
+      svg {
+        height: 18px;
+        width: 18px;
+        stroke-width: 1.2px;
+        stroke: $muted-grey;
+        margin-right: 4px;
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+1. Invoice
+========================================================================== */
+
+.invoice {
+  background: #fff;
+  width: 100%;
+  padding: 50px;
+
+  //Logo
+  .logo {
+    width: 60px;
+  }
+
+  .document-type {
+    text-align: right;
+    color: #444;
+  }
+
+  .conditions {
+    font-size: 0.7em;
+    color: #666;
+  }
+
+  //Invoice footer
+  .bottom-page {
+    font-size: 0.85em;
+
+    .company,
+    .url {
+      font-weight: 500;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .url {
+      color: $primary;
+    }
+
+    .code,
+    .id {
+      color: $dark-text;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 500;
+      font-size: 90%;
+    }
+  }
+
+  //Supplier and Customer
+  .seller,
+  .buyer {
+    font-size: 0.85rem;
+    color: $muted-grey-bold;
+    font-weight: 400;
+
+    span {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: $dark-text;
+    }
+  }
+
+  //Meta
+  .invoice-meta {
+    span {
+      text-transform: uppercase;
+      font-family: 'Raleway', sans-serif;
+      font-size: 70%;
+      font-weight: 600;
+
+      small {
+        font-weight: 500;
+        color: $muted-grey-bold;
+        text-transform: none;
+        font-size: 1rem;
+
+        &.date {
+          font-size: 0.85rem;
+          padding: 0 5px;
+        }
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+2. Responsive Table
+========================================================================== */
+
+.responsive-table {
+  width: 100%;
+
+  td {
+    vertical-align: middle !important;
+
+    .product {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 90%;
+    }
+
+    .sku {
+      font-size: 80%;
+      color: $muted-grey-bold;
+      font-weight: 500;
+    }
+
+    .quantity {
+      color: $muted-grey-bold;
+    }
+
+    .unit-price,
+    .total-price {
+      font-weight: 500;
+      color: $dark-text;
+      font-size: 85%;
+
+      // &:before {
+      //   content: '€';
+      //   font-size: 80%;
+      // }
+    }
+  }
+
+  th {
+    text-transform: uppercase;
+    font-weight: 500 !important;
+    font-size: 0.75rem;
+    color: $muted-grey-bold !important;
+  }
+
+  //Responsive mode
+  @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+    //Force card display
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+
+    //Hide table headers
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    tr {
+      border: 1px solid #ccc;
+    }
+
+    td {
+      /* Behave  like a "row" */
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 50%;
+
+      &.has-text-centered {
+        text-align: left !important;
+      }
+    }
+
+    td:before {
+      //Table header
+      position: absolute;
+
+      //Mimic padding
+      top: 12px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      text-transform: uppercase;
+      font-weight: 500 !important;
+      font-size: 0.75rem;
+      color: $muted-grey-bold !important;
+    }
+
+    //Data labels
+    // td:nth-of-type(1):before {
+    //   content: 'Product';
+    // }
+
+    // td:nth-of-type(2):before {
+    //   content: 'Quantity';
+    // }
+
+    // td:nth-of-type(3):before {
+    //   content: 'Price';
+    // }
+
+    // td:nth-of-type(4):before {
+    //   content: 'Total';
+    // }
+  }
+}
+
+//Subtable
+.sub-table {
+  width: 100% !important;
+
+  .subtotal,
+  .vat {
+    text-transform: uppercase;
+    font-weight: 500 !important;
+    font-size: 0.75rem;
+    color: $muted-grey-bold;
+  }
+
+  .total {
+    text-transform: uppercase;
+    font-weight: 500 !important;
+    font-size: 95%;
+    color: $dark-text;
+  }
+
+  .subtotal-value,
+  .vat-value {
+    font-weight: 500;
+    font-size: 80%;
+    color: $dark-text;
+
+    // &:before {
+    //   content: '€';
+    //   font-size: 80%;
+    // }
+  }
+
+  .total-value {
+    font-weight: 600;
+    color: $primary;
+
+    // &:before {
+    //   content: '€';
+    //   font-size: 80%;
+    // }
+  }
+}
+
+.columns {
+  .column {
+    &.main-column {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    &.invoice-column {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+  }
+}

@@ -12,7 +12,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { FooterComponent } from './footer/footer.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -25,6 +24,7 @@ import { TenantModule } from './tenant/tenant.module';
 import { BuildingModule } from './building/building.module';
 import { DeviceModule } from './device/device.module';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 function initializeKeycloak(keycloak: KeycloakService): () => Promise<any> {
   return (): Promise<any> => {
@@ -52,7 +52,7 @@ function initializeKeycloak(keycloak: KeycloakService): () => Promise<any> {
 }
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, SidebarComponent, FooterComponent],
+  declarations: [AppComponent, HeaderComponent, SidebarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -61,6 +61,7 @@ function initializeKeycloak(keycloak: KeycloakService): () => Promise<any> {
     MatDividerModule,
     MatToolbarModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     MatButtonModule,
     MatMenuModule,
     MatListModule,
