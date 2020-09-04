@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { Occupant, Flat, AddEditOccupantData, DeleteData } from './../app.interface';
 import { BuildingService } from './../building/building.service';
 import { TenantService } from './tenant.service';
@@ -20,6 +21,8 @@ export class TenantComponent implements OnInit {
     private readonly tenantService: TenantService,
     private readonly dialog: MatDialog,
     private readonly buildingService: BuildingService,
+    private readonly router: Router,
+    private readonly route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
@@ -103,7 +106,6 @@ export class TenantComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((data) => {
       if (data) {
-        console.log(occupant._id);
         this.tenantService
           .deleteOccupant(occupant._id)
           .pipe(take(1))
@@ -112,6 +114,10 @@ export class TenantComponent implements OnInit {
           });
       }
     });
+  }
+
+  viewBilling(occupant: Occupant): void {
+    this.router.navigate([occupant._id, 'billing'], { relativeTo: this.route });
   }
 
   private loadOccupants(): void {
