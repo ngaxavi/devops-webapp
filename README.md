@@ -1,6 +1,6 @@
 # DevopsWebapp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.6.
+This Webapp works together with [Building-Service](https://github.com/ngaxavi/building-service), [Tenant-Service](https://github.com/ngaxavi/tenant-service) und [Device-Service](https://github.com/ngaxavi/device-service)
 
 ## Development server
 
